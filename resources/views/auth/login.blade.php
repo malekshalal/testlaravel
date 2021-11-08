@@ -39,6 +39,9 @@
                     <button type="submit" class=" btn btn-block btn-primary ">Sign In</button>
                     <hr>
                     <a href="{{route('auth.register')}}">I don't have a account,create new</a>
+                    <br>
+                    <a href="{{ route('forget.password.get') }}">Reset Password</a>
+
                 </form>
                 
             </div>

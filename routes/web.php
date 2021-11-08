@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,11 @@ Route::post('auth/save',[MainController::class,'save'])->name('auth.save');
 Route::post('auth/check',[MainController::class,'check'])->name('auth.check');
 Route::get('auth/logout',[MainController::class,'logout'])->name('auth.logout');
 
+  
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 Route::group(['middleware'=>['AuthCheck']],function(){
     Route::get('auth/login',[MainController::class,'index'])->name('auth.login');
